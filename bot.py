@@ -48,6 +48,7 @@ def message(payload):
                     "author_name": "Image",
                     "image_url": f"{poke_info['img']}"
                 }])
+    return make_response('event_check', 200, {"X-Slack-No-Retry": 1})
 
 
 @app.route('/')
@@ -57,7 +58,7 @@ def hello():
 
 @app.route("/slack/events", methods=["GET", "POST"])
 def event_check():
-    return make_response('', 200, {"X-Slack-No-Retry": 1})
+    return make_response('event_check', 200, {"X-Slack-No-Retry": 1})
 
 
 if __name__ == "__main__":
