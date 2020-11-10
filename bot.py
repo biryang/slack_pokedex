@@ -2,7 +2,7 @@ import os
 from slack_sdk import WebClient
 from pathlib import Path
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, request,  make_response
 from slackeventsapi import SlackEventAdapter
 from WebDex import poke_dex_info
 
@@ -53,6 +53,11 @@ def message(payload):
 @app.route('/')
 def hello():
     return 'Hello, PokeDex!'
+
+
+@app.route("/slack/events", methods=["GET", "POST"])
+def event_check():
+    return make_response('', 200, {"X-Slack-No-Retry": 1})
 
 
 if __name__ == "__main__":
