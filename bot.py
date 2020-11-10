@@ -52,7 +52,7 @@ def message(payload):
 
 @app.route('/')
 def hello():
-    return 'Hello, World!'
+    return 'Hello, PokeDex!'
 
 
 if __name__ == "__main__":
